@@ -1,0 +1,13 @@
+package pruebaSpring.entities;
+
+public class GuitarraAdapter implements InstrumentoMusical {
+	private Guitarra guitarra;
+	
+	public GuitarraAdapter() {
+		this.guitaraa
+	}
+	
+	public void tocar() {
+		this.rasgar();
+	}
+}

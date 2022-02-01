@@ -1,0 +1,21 @@
+package pruebaSpring.entities;
+
+import java.util.Properties;
+
+public class Musico {
+	
+	private InstrumentoMusical instrumento;
+	
+	public Musico() {
+		 Properties p = new Properties(); p.load(new FileInputStream("conf.properties"));
+		    if (this.b==null) {this.b=(IB)Class.forName(p.getProperty("impl")).newInstance();} 
+		    return this.b; }
+
+	}
+
+	
+	public void tocar() {
+		this.instrumento.tocar();;
+	}
+
+}

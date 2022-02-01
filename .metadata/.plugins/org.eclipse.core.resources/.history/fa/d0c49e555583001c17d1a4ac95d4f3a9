@@ -1,0 +1,5 @@
+package pruebaSpring.entities;
+
+public class TrompetaAdapter {
+	private Trompeta trompeta;
+}

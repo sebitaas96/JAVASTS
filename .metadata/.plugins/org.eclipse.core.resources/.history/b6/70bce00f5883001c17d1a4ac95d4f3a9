@@ -1,0 +1,27 @@
+package pruebaSpring.entities;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+public class InstrumentMusicalFactory {
+	
+	public InstrumentoMusical getInstrumento() {
+			InstrumentoMusical im = null;
+		
+		 Properties p = new Properties();
+		 try {
+			p.load(new FileInputStream("conf.properties"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	return (InstrumentoMusical)Class.forName(p.getProperty("instrumento")).newInstance();
+		
+	}
+}

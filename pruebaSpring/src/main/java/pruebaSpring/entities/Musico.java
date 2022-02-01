@@ -1,20 +1,19 @@
 package pruebaSpring.entities;
 
+
+
 public class Musico {
 	
-	//private Trompeta trompeta;
-	private Guitarra guitarra;
+	private InstrumentoMusical instrumento;
 	
-	public Musico() {
-		//this.trompeta= new Trompeta();
-		this.guitarra = new Guitarra();
+	public Musico(){
+		InstrumentoMusicalFactory imf = InstrumentoMusicalFactory.getIMF();
+		this.instrumento = imf.getInstrumento();
 	}
 
 	
 	public void tocar() {
-	//	this.trompeta.calentar();
-		//this.trompeta.sonar();
-		this.guitarra.rasgar();
+		this.instrumento.tocar();
 	}
 
 }

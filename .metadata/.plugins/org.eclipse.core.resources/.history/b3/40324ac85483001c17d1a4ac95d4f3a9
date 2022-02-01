@@ -1,0 +1,7 @@
+package pruebaSpring.entities;
+
+public class GuitarraAdapter {
+	public void tocar() {
+		this.rasgar();
+	}
+}

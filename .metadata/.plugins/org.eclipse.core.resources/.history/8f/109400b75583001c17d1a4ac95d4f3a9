@@ -1,0 +1,17 @@
+package pruebaSpring.entities;
+
+public class Musico {
+	
+	private InstrumentoMusical instrumento;
+	
+	public Musico() {
+		//Si quiero cambiar de guitarra a trompetra , solo tenemos que cambiar el adaptador
+		this.instrumento = new GuitarraAdapter();
+	}
+
+	
+	public void tocar() {
+		this.instrumento.tocar();;
+	}
+
+}

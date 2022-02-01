@@ -1,0 +1,15 @@
+package pruebaSpring.entities;
+
+import java.io.FileInputStream;
+import java.util.Properties;
+
+public class InstrumentoFactory {
+	
+	public void getInstrumento() {
+		 Properties p = new Properties();
+		 p.load(new FileInputStream("conf.properties"));
+		    if (this.instrumento==null) {
+		    	this.instrumento=(InstrumentoMusical)Class.forName(p.getProperty("instrumento")).newInstance();
+		    	} 
+	}
+}
