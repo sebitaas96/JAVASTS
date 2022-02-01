@@ -1,6 +1,6 @@
 package pruebaSpring.entities;
 
-public class TrompetaAdapter implements InstrumentoMusical{
+public class TrompetaAdapter {
 	private Trompeta trompeta;
 	
 	public TrompetaAdapter() {
