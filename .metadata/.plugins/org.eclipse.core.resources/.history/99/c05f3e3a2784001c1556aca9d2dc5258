@@ -1,0 +1,19 @@
+package pruebaSpring.entities;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MusicoCutre {
+	
+	private Guitarra guitarra;
+	
+	public MusicoCutre(){
+		this.guitarra = new Guitarra();
+	}
+
+	
+	public void tocar() {
+		this.guitarra.rasgar();
+	}
+
+}

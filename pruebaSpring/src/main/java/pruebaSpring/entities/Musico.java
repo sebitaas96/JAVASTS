@@ -1,16 +1,12 @@
 package pruebaSpring.entities;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class Musico {
-	
+	@Autowired
 	private InstrumentoMusical instrumento;
-	
-	public Musico(){
-		InstrumentoMusicalFactory imf = InstrumentoMusicalFactory.getIMF();
-		this.instrumento = imf.getInstrumento();
-	}
-
 	
 	public void tocar() {
 		this.instrumento.tocar();

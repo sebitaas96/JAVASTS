@@ -1,0 +1,18 @@
+package pruebaSpring.entities;
+
+
+
+public class MusicoCutre {
+	
+	private Guitarra guitarra;
+	
+	public MusicoCutre(){
+		this.guitarra = new Guitarra();
+	}
+
+	
+	public void tocar() {
+		this.guitarra.rasgar();
+	}
+
+}

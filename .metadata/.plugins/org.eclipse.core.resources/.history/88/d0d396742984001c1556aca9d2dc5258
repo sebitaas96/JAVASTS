@@ -1,0 +1,13 @@
+package pruebaSpring.entities;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class TrompetaAdapter implements InstrumentoMusical{
+	private Trompeta trompeta;
+
+	public void tocar() {
+		this.trompeta.calentar();
+		this.trompeta.sonar();
+	}
+}

@@ -1,0 +1,14 @@
+package pruebaSpring.entities;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Musico {
+	
+	private InstrumentoMusical instrumento;
+	
+	public void tocar() {
+		this.instrumento.tocar();
+	}
+
+}

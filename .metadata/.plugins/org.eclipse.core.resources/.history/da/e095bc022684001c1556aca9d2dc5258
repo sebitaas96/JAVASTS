@@ -1,0 +1,29 @@
+package pruebaSpring;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import pruebaSpring.entities.Musico;
+import pruebaSpring.entities.MusicoCutre;
+
+public class Main {
+	public static void main(String[] args) throws FileNotFoundException, InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+		System.out.println("Comienza la fiesta");
+		//Musico musico = new Musico();
+		//musico.tocar();
+		
+		//Vemmos como cargar spring
+			/*1-Le damos la vuelta al control para darselo a SpringBoot: IOC inversion of control*/
+		ApplicationContext context = new AnnotationConfigApplicationContext(Main.class);A a=(A)context.getBean("a");
+
+		
+		MusicoCutre musico = new MusicoCutre();
+		musico.tocar();
+	}
+	
+	
+
+}

@@ -1,0 +1,22 @@
+package pruebaSpring;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import pruebaSpring.entities.Musico;
+import pruebaSpring.entities.MusicoCutre;
+
+public class Main {
+	public static void main(String[] args) throws FileNotFoundException, InstantiationException, IllegalAccessException, ClassNotFoundException, IOException {
+		System.out.println("Comienza la fiesta");
+		//Musico musico = new Musico();
+		//musico.tocar();
+		
+		//Vemmos como cargar spring
+		MusicoCutre musico = new MusicoCutre();
+		musico.tocar();
+	}
+	
+	
+
+}

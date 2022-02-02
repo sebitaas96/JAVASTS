@@ -1,0 +1,12 @@
+package pruebaSpring.entities;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class GuitarraAdapter implements InstrumentoMusical {
+	private Guitarra guitarra;
+	
+	public void tocar() {
+		this.guitarra.rasgar();
+	}
+}

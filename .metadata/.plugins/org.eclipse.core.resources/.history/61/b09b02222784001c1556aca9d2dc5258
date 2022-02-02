@@ -1,0 +1,32 @@
+package pruebaSpring;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+import pruebaSpring.entities.MusicoCutre;
+
+//Anotamos la clase main con ComponentScan es decir escanea todas las clases
+@ComponentScan
+public class Main {
+	
+	public static void main(String[] args) {
+		System.out.println("Comienza la fiesta");
+		//Musico musico = new Musico();
+		//musico.tocar();
+		
+		//Vemmos como cargar spring
+			/*1-Le damos la vuelta al control para darselo a SpringBoot: IOC inversion of control*/
+			ApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
+			/*2-Anotamos el main con ComponentScan y las clases normales con Component*/
+			/*3-Interactuar con los objetos que spring ya ha escaneado ,entonces le decimos
+			 * al contexto que nos de un bean con la clase que ha escnaedo OJOOOO: EL NOMBRE
+			 * DE LAS CLASES LAS PONE EN MINUSCULA*/
+				MusicoCutre mc =(MusicoCutre) context.getBean("musicoCutre");
+				
+	}
+	
+	
+
+}
