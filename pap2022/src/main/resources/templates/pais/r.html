@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Paises</h1>
+<form action="/pais/c">
+	<input type="submit" value="Nuevo pais">
+</form><br />
+
+
+<!--Cona la marca th text , dice que tiene que rellenar esa marca con ese texto-->
+<h2 th:text="${saludo}"></h2><br/>
+
+
+<h3>LISTA DE PAISES</h3>
+<table border="1">
+	<tr>
+		<th>Nombre</th>
+	</tr>
+	<tr th:each="pais:${paises}">
+		<td th:text="${pais.nombre}"></td>
+	</tr>
+</table>
+
+</html>
