@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<h1>Personas</h1>
+<form action="/persona/c">
+	<input type="submit" value="Nueva persona">
+</form><br />
+
+
+<!--Cona la marca th text , dice que tiene que rellenar esa marca con ese texto-->
+
+
+<h3>LISTA DE PERSONAS</h3>
+<table border="1">
+	<tr>
+		<th>Nombre</th>
+	</tr>
+	<tr th:each="persona:${personas}">
+		<td th:text="${persona.nombre}"></td>
+	</tr>
+</table>
+
+</html>

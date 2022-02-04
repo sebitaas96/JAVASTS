@@ -24,21 +24,26 @@ public class PaisController {
 			) {
 		List<Pais> paises = paisRepository.findAll();
 		m.put("paises", paises);
-		m.put("saludo", "Hola");
-		return "pais/r";
+		m.put("view","pais/r");
+		return "_t/frame";
 	}
 	
 	@GetMapping("/pais/c")
-	public String c() {
-		return "pais/c";
+	public String c(
+			ModelMap m
+			) {
+		m.put("view", "pais/c");
+		return "_t/frame";
 	}
 	
 	@PostMapping("/pais/cPost") // Para recibir  datos Post hay que usar PostMapping
 	public String cPost(
-			@RequestParam("nom") String nombre
+			@RequestParam("nom") String nombre,
+			ModelMap m
 			) {
-		//Los parametros que vienen del formulario vienen por los corchetes
-		paisRepository.save(new Pais(nombre));
-		return "redirect:/pais/r";
+			//Los parametros que vienen del formulario vienen por los corchetes
+			paisRepository.save(new Pais(nombre));
+		m.put("view", "pais/r");
+		return "_t/frame";
 	}	
 }
