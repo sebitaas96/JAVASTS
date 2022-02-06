@@ -1,7 +1,15 @@
-<h1>Nuevo pais</h1>
 
-<form action="/pais/cPost" method="POST">
-	<label for="idNombre">Nombre</label>
-	<input type="text" name="nom" id="idNombre"><br/>
-	<input type="submit" value="Crear">
-</form>
+<div class="container mt-4 mb-4 bg-secondary bg-opacity-10">
+	<div class="row mb-4">
+	<h1 class="display-6 col-12 mb-4">Crea tu pais</h1>
+	<form action="/pais/cPost" method="post" class="col-12">
+		<div class="form-row mb-4">
+			<div class="col-12">
+				<label for="nom">Nombre del pais:</label>
+				<input type="text" name="nom" id="nom" required="required" class="form-control" placeholder="Nombre"/>
+			</div>
+		</div>
+		 <button class="btn btn-primary col-5" type="submit">Crear</button>
+	</form>
+</div>
+</div>

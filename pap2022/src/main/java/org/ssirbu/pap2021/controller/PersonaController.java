@@ -23,8 +23,8 @@ public class PersonaController {
 			//Creamos un model map vacio
 			ModelMap m 
 			) {
-		List<Persona> paises = personaRepository.findAll();
-		m.put("personas", paises);
+		List<Persona> personas = personaRepository.findAll();
+		m.put("personas", personas);
 		m.put("view","persona/r");
 		return "_t/frame";
 	}
