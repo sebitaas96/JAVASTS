@@ -1,3 +1,10 @@
 <header class="container">
+	      <button th:if="${session.persona==null}" type="button" class="btn btn-warning" onclick="location.href='/login'">Login</button>
+	      
+	      <div th:unless="${session.persona==null}" >
+	      	<span th:text="${session.persona.nombre}"/>
+	      	<button type="button" class="btn btn-warning" onclick="location.href='/logout'">Logout</button>
+	      </div>
+	      
 </header>
 

@@ -38,10 +38,11 @@ public class PersonaController {
 	@PostMapping("/persona/cPost") // Para recibir  datos Post hay que usar PostMapping
 	public String cPost(
 			@RequestParam("nom") String nombre,
+			@RequestParam("pass") String password,
 			ModelMap m
 			) {
 			//Los parametros que vienen del formulario vienen por los corchetes
-			personaRepository.save(new Persona(nombre));
+			personaRepository.save(new Persona(nombre , password));
 			m.put("view","persona/r");
 			return "_t/frame";
 	}	
