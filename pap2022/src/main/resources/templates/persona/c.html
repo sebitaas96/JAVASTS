@@ -12,6 +12,20 @@
 			<label for="pass">Password:</label>
 			<input type="password" name="pass" id="pass" required="required" class="form-control" placeholder="Contraseña"/>
 		</div>
+		<div class="col-2">	
+				<label class="d-block" for="nace">Pais donde nació</label>
+  				<select class="custom-select w-100" id="nace" name="nace">
+  					<!--<option value="" selected="selected">Choose..</option>-->
+  					<option th:each=pais:${paises} th:value="${pais.id}" th:text=${pais.nombre}/>
+  				</select>
+  		</div>
+  		 <div class="col-6 mt-4">
+  		 	<label>Aficiones que le gusta</label>
+  			<div class="custom-control custom-checkbox" th:each="aficion:${aficiones}">
+  				<input type="checkbox" class="custom-control-input" name="afiGusta[]" th:id="|gus-${aficion.id}|" th:value="${aficion.id}">
+  				<label class="custom-control-label" th:for="|gus-${aficion.id}|" th:text="${aficion.nombre}"/>
+			</div>
+  		</div>
   	<button class="btn btn-primary col-2 mt-4" type="submit">Crear</button>
 	</form>
 	</div>

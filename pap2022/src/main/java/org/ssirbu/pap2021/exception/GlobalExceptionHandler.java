@@ -17,7 +17,7 @@ public class GlobalExceptionHandler {
 	    s.setAttribute("_mensaje", mensaje);
 	    s.setAttribute("_link", link);
 	    s.setAttribute("_severity", "danger");
-	    
+	    //Navega hasta aqui via get
 	    return new RedirectView("/info");
 	}
 

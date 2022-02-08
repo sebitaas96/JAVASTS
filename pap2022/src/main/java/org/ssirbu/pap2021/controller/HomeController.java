@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ssirbu.pap2021.entities.Persona;
+import org.ssirbu.pap2021.exception.DangerException;
+import org.ssirbu.pap2021.exception.PRG;
 import org.ssirbu.pap2021.repository.PersonaRepository;
 
 @Controller
@@ -20,8 +22,7 @@ public class HomeController {
 	
 	@GetMapping("/info")
 	public String info(HttpSession s, ModelMap m) {
-		String mensaje = s.getAttribute("_mensaje") != null ? (String) s.getAttribute("_mensaje")
-				: "Pulsa para volver a home";
+		String mensaje = s.getAttribute("_mensaje") != null ? (String) s.getAttribute("_mensaje"): "Pulsa para volver a home";
 		String severity = s.getAttribute("_severity") != null ? (String) s.getAttribute("_severity") : "info";
 		String link = s.getAttribute("_link") != null ? (String) s.getAttribute("_link") : "/";
 
@@ -47,13 +48,12 @@ public class HomeController {
 	}
 	
 	@PostMapping("/login")
-	public String loginPost(
+	public void loginPost(
 			@RequestParam("nom")String nombre,
 			@RequestParam("pass")String password,
 			HttpSession s //Le pasamso esta variable que es la sesion  , para ver si hay una creada o no  
-			) {
+			) throws DangerException {
 		
-		String returnLocation = "redirect:/";
 		try {
 		Persona p = personaRepository.getByNombre(nombre);
 		if (new BCryptPasswordEncoder().matches(password,p.getPassword())){
@@ -62,9 +62,8 @@ public class HomeController {
 		}
 		}
 		catch(Exception e) {
-			returnLocation = "redirect:/error)msg=Usuario incorrecto";
+			PRG.error("Login incorrecto" ,"/home/login");
 		}
-		return returnLocation;
 	}
 	
 	@GetMapping("/logout")

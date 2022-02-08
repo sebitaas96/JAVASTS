@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ssirbu.pap2021.entities.Aficion;
+import org.ssirbu.pap2021.exception.DangerException;
+import org.ssirbu.pap2021.exception.InfoException;
+import org.ssirbu.pap2021.exception.PRG;
 import org.ssirbu.pap2021.repository.AficionRepository;
 
 
@@ -37,13 +40,18 @@ public class AficionController {
 	}
 	
 	@PostMapping("/aficion/cPost") // Para recibir  datos Post hay que usar PostMapping
-	public String cPost(
+	public void cPost(
 			@RequestParam("nom") String nombre,
 			ModelMap m
-			) {
+			) throws DangerException, InfoException {
 		//Los parametros que vienen del formulario vienen por los corchetes
-		aficionRepository.save(new Aficion(nombre));
-		m.put("view","aficion/r");
-		return "_t/frame";
+		try {
+			aficionRepository.save(new Aficion(nombre));
+		}
+		catch(Exception e) {
+			PRG.error("La aficion ya existe" ,"/aficion/c");
+		}
+		PRG.info("La aficion se ha insertado correctamente" ,"/aficion/r");
+	
 	}	
 }

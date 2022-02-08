@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ssirbu.pap2021.entities.Pais;
+import org.ssirbu.pap2021.exception.DangerException;
+import org.ssirbu.pap2021.exception.InfoException;
+import org.ssirbu.pap2021.exception.PRG;
 import org.ssirbu.pap2021.repository.PaisRepository;
 
 @Controller
@@ -37,13 +40,18 @@ public class PaisController {
 	}
 	
 	@PostMapping("/pais/cPost") // Para recibir  datos Post hay que usar PostMapping
-	public String cPost(
+	public void cPost(
 			@RequestParam("nom") String nombre,
 			ModelMap m
-			) {
-			//Los parametros que vienen del formulario vienen por los corchetes
+			) throws DangerException, InfoException {
+			//Los parametros que vienen del formulario vienen por los corchetes		
+		try {
 			paisRepository.save(new Pais(nombre));
-		m.put("view", "pais/r");
-		return "_t/frame";
+			
+		}
+		catch(Exception e) {
+			PRG.error("El pais ya existe" ,"/pais/c");
+		}
+		PRG.info("El pais se ha insertado correctamente" ,"/pais/r");
 	}	
 }

@@ -1,11 +1,15 @@
 package org.ssirbu.pap2021.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Pais {
@@ -13,16 +17,21 @@ public class Pais {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(unique = true)
-	private String nombre; 
+	@Column(unique = true , nullable = false)
+	private String nombre;
+	//Es one to many porque en un pais nacen muchas personas y le inidcamos que el que le mapea desde persona es nace
+	@OneToMany(mappedBy="nace")
+	private Collection<Persona> nativos;
 	
 	//============================	
 	public Pais() {
-		
+		this.nombre = "Atlantida";
+		this.nativos = new ArrayList<Persona>();
 	}
 
 	public Pais(String nombre) {
 		this.nombre = nombre;
+		this.nativos = new ArrayList<Persona>();
 	}
 
 	
@@ -42,7 +51,15 @@ public class Pais {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 
+	public Collection<Persona> getNativos() {
+		return nativos;
+	}
+
+	public void setNativos(Collection<Persona> nativos) {
+		this.nativos = nativos;
+	}
 
 	//=============================
 	@Override

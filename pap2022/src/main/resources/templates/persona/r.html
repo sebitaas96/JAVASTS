@@ -16,8 +16,10 @@
   </thead>
   <tbody>
     <tr th:each="persona:${personas}">
-      <td scope="row" th:text="${persona.id}"></td> 
-      <td th:text="${persona.nombre}"></td>
+      <td scope="row" th:text="${persona.id}"/>
+      <td th:text="${persona.nombre}"/>
+      <!--Si ponemos las pipes podemos añadir mas texto-->
+      <td th:text="|${persona.nace.nombre}: Total(${persona.nace.nativos.size()})|"/>
     </tr>
   </tbody>
 </table>
