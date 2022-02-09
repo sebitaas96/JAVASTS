@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ssirbu.pap2021.entities.Aficion;
+import org.ssirbu.pap2021.entities.Pais;
 import org.ssirbu.pap2021.exception.DangerException;
 import org.ssirbu.pap2021.exception.InfoException;
 import org.ssirbu.pap2021.exception.PRG;
@@ -53,5 +54,35 @@ public class AficionController {
 		}
 		PRG.info("La aficion se ha insertado correctamente" ,"/aficion/r");
 	
-	}	
+	}
+	
+	@PostMapping("/aficion/u")
+	public String u(
+			@RequestParam("aficion")Long aficionId,
+			ModelMap m 
+			) {
+		Aficion aficion= aficionRepository.getById(aficionId);
+		m.put("aficion", aficion);
+		m.put("view","aficion/u");
+		return "_t/frame";
+	}
+	@PostMapping("/aficion/uPost")
+	public void uPost(
+			@RequestParam("nom")String nombre,
+			@RequestParam("id")Long id
+			) throws DangerException, InfoException {
+
+		try {
+			Aficion aficion = aficionRepository.getById(id);
+			aficion.setNombre(nombre);
+			aficionRepository.save(aficion);
+			
+		}
+		catch(Exception e) {
+			PRG.error("La aficion no se ha podido actualizar" ,"/pais/r");
+		}
+		PRG.info("La aficion se ha actualizado correctamente" ,"/pais/r");
+
+
+	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ssirbu.pap2021.entities.Persona;
 import org.ssirbu.pap2021.exception.DangerException;
+import org.ssirbu.pap2021.exception.InfoException;
 import org.ssirbu.pap2021.exception.PRG;
 import org.ssirbu.pap2021.repository.PersonaRepository;
 
@@ -52,7 +53,7 @@ public class HomeController {
 			@RequestParam("nom")String nombre,
 			@RequestParam("pass")String password,
 			HttpSession s //Le pasamso esta variable que es la sesion  , para ver si hay una creada o no  
-			) throws DangerException {
+			) throws DangerException, InfoException {
 		
 		try {
 		Persona p = personaRepository.getByNombre(nombre);
@@ -62,8 +63,9 @@ public class HomeController {
 		}
 		}
 		catch(Exception e) {
-			PRG.error("Login incorrecto" ,"/home/login");
+			PRG.error("Login incorrecto" ,"/login");
 		}
+		PRG.info("Login correcto" ,"/");
 	}
 	
 	@GetMapping("/logout")

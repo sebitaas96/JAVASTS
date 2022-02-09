@@ -14,6 +14,22 @@
     <tr th:each="pais:${paises}">
     	<td th:text="${pais.id}"></td>
     	<td th:text="${pais.nombre}"></td>
+    	<td>
+     		<form method="post" action="/pais/u">
+     			<button type="submit" class="btn btn-primary">
+     			<img src="/img/pencil.svg" width="20" /> 
+				</button>
+				<input type="hidden" name="pais" th:value="${pais.id}"/>
+			</form>
+     	</td>
+     	<td>
+     		<form method="post" action="/pais/d">	
+     			<button class="btn btn-primary">
+     			<img src="/img/trash.svg" width="20" /> 
+				</button>
+				<input type="hidden" name="pais" th:value="${pais.id}"/>
+			</form>	
+     	</td>
     </tr>
   </tbody>
 </table>

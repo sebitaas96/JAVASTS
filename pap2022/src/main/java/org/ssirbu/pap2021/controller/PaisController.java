@@ -53,5 +53,36 @@ public class PaisController {
 			PRG.error("El pais ya existe" ,"/pais/c");
 		}
 		PRG.info("El pais se ha insertado correctamente" ,"/pais/r");
-	}	
+	}
+	
+	@PostMapping("/pais/u")
+	public String u(
+			@RequestParam("pais")Long paisId,
+			ModelMap m 
+			) {
+		Pais pais = paisRepository.getById(paisId);
+		m.put("pais", pais);
+		m.put("view","pais/u");
+		return "_t/frame";
+	}
+	@PostMapping("/pais/uPost")
+	public void uPost(
+			@RequestParam("nom")String nombre,
+			@RequestParam("id")Long id,
+			ModelMap m 
+			) throws DangerException, InfoException {
+
+		try {
+			Pais pais = paisRepository.getById(id);
+			pais.setNombre(nombre);
+			paisRepository.save(pais);
+			
+		}
+		catch(Exception e) {
+			PRG.error("El pais no se ha podido actualizar" ,"/pais/r");
+		}
+		PRG.info("El pais se ha actualizado correctamente" ,"/pais/r");
+
+
+	}
 }
