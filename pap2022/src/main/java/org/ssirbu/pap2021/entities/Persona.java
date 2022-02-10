@@ -2,6 +2,8 @@ package org.ssirbu.pap2021.entities;
 
 
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,6 +24,7 @@ public class Persona {
 	private Long id;
 	@Column(unique=true)
 	private String nombre; 
+	private LocalDate fNacimiento;
 	private String password;
 	//Es many to one por que muchas personas nacen en un pais y ya lo hemsos mapeado en pai
 	@ManyToOne
@@ -35,13 +38,15 @@ public class Persona {
 	public Persona() {
 		this.nombre = "Jhon Doe";
 		this.aficionesGusta = new ArrayList<Aficion>();
+		this.setfNacimiento(LocalDate.now());
 	}
 
-	public Persona(String nombre , String password , Pais nace) {
+	public Persona(String nombre , String password , Pais nace , LocalDate fNacimiento) {
 		this.nombre = nombre;
 		this.password= encriptar(password);
 		this.nace = nace;
-		
+		this.nace.getNativos().add(this);
+		this.setfNacimiento(fNacimiento);
 	}
 
 	
@@ -80,6 +85,13 @@ public class Persona {
 		this.nace.getNativos().add(this);
 	}
 	
+	public LocalDate getfNacimiento() {
+		return fNacimiento;
+	}
+
+	public void setfNacimiento(LocalDate fNacimiento) {
+		this.fNacimiento = fNacimiento;
+	}
 
 
 	public Collection<Aficion> getAficionesGusta() {
@@ -103,10 +115,22 @@ public class Persona {
 		return (new BCryptPasswordEncoder()).encode(password);
 	}
 	
+	public Integer getEdad() {
+		int sol =0;
+		LocalDate hoy = LocalDate.now();
+		LocalDate fNac = this.getfNacimiento();
+		if(fNac !=null) {
+			Period intervalo = Period.between(fNac, hoy);
+			sol = intervalo.getYears();
+		}
+		return sol;
+	}	
 	
 	@Override
 	public String toString() {
 		return "Pais [nombre=" + nombre + "]";
 	}
+
+
 	
 }

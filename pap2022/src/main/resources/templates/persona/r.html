@@ -6,10 +6,9 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>
+      <th scope="col">Fecha de Nacimiento</th>
       <th scope="col">Pais nacimiento</th>
-      <th scope="col">Pais residencia</th>
       <th scope="col">Aficiones gusta</th>
-      <th scope="col">Aficiones odia</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -18,8 +17,27 @@
     <tr th:each="persona:${personas}">
       <td scope="row" th:text="${persona.id}"/>
       <td th:text="${persona.nombre}"/>
+      <td th:text="${persona.getEdad()}"/>
       <!--Si ponemos las pipes podemos añadir mas texto-->
       <td th:text="|${persona.nace.nombre}: Total(${persona.nace.nativos.size()})|"/>
+      <!--La etiquete th:bloc crea como un pequeño div que no inserta nada en el html-->
+      <td><th:block th:each="aficion:${persona.aficionesGusta}" th:text="|${aficion.nombre}, |"/></td>
+      <td>
+     	<form method="post" action="/persona/u">
+     		<button type="submit" class="btn btn-primary">
+     			<img src="/img/pencil.svg" width="20" /> 
+			</button>
+			<input type="hidden" name="persona" th:value="${persona.id}"/>
+		</form>
+     </td>
+     <td>
+     	<form method="post" action="/persona/d">	
+     		<button class="btn btn-primary">
+     			<img src="/img/trash.svg" width="20" /> 
+			</button>
+			<input type="hidden" name="persona" th:value="${persona.id}"/>
+		</form>	
+     </td>
     </tr>
   </tbody>
 </table>

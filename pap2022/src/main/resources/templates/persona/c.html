@@ -12,6 +12,10 @@
 			<label for="pass">Password:</label>
 			<input type="password" name="pass" id="pass" required="required" class="form-control" placeholder="Contraseña"/>
 		</div>
+		<div class="col-2">			
+			<label for="nacimiento">Fecha de nacimiento :</label>
+			<input type="date" name="fNacimiento" id="nacimiento" required="required" class="form-control"/>
+		</div>
 		<div class="col-2">	
 				<label class="d-block" for="nace">Pais donde nació</label>
   				<select class="custom-select w-100" id="nace" name="nace">
@@ -26,6 +30,7 @@
   				<label class="custom-control-label" th:for="|gus-${aficion.id}|" th:text="${aficion.nombre}"/>
 			</div>
   		</div>
+  		<div class="col-6"></div>
   	<button class="btn btn-primary col-2 mt-4" type="submit">Crear</button>
 	</form>
 	</div>

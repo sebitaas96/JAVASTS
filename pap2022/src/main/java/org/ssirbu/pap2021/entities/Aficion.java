@@ -30,6 +30,7 @@ public class Aficion {
 
 	public Aficion(String nombre) {
 		this.nombre = nombre;
+		this.personasGustan = new ArrayList<Persona>();
 	}
 
 	
