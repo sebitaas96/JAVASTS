@@ -22,16 +22,19 @@ public class Pais {
 	//Es one to many porque en un pais nacen muchas personas y le inidcamos que el que le mapea desde persona es nace
 	@OneToMany(mappedBy="nace")
 	private Collection<Persona> nativos;
-	
+	@OneToMany(mappedBy = "vive")
+	private Collection<Persona>residentes;
 	//============================	
 	public Pais() {
 		this.nombre = "Atlantida";
 		this.nativos = new ArrayList<Persona>();
+		this.residentes = new ArrayList<Persona>();
 	}
 
 	public Pais(String nombre) {
 		this.nombre = nombre;
 		this.nativos = new ArrayList<Persona>();
+		this.residentes = new ArrayList<Persona>();
 	}
 
 	
@@ -59,6 +62,15 @@ public class Pais {
 
 	public void setNativos(Collection<Persona> nativos) {
 		this.nativos = nativos;
+	}
+	
+
+	public Collection<Persona> getResidentes() {
+		return residentes;
+	}
+
+	public void setResidentes(Collection<Persona> residentes) {
+		this.residentes = residentes;
 	}
 
 	//=============================

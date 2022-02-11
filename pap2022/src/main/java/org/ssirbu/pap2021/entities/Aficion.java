@@ -22,15 +22,19 @@ public class Aficion {
 	
 	@ManyToMany(mappedBy="aficionesGusta")
 	private Collection<Persona>personasGustan;
+	@ManyToMany(mappedBy = "aficionesDisgusta")
+	private Collection<Persona>personasDisgustan;
 	//============================	
 	public Aficion() {
 		this.nombre="todo";
 		this.personasGustan = new ArrayList<Persona>();
+		this.personasDisgustan = new ArrayList<Persona>();
 	}
 
 	public Aficion(String nombre) {
 		this.nombre = nombre;
 		this.personasGustan = new ArrayList<Persona>();
+		this.personasDisgustan = new ArrayList<Persona>();
 	}
 
 	
@@ -59,6 +63,15 @@ public class Aficion {
 
 	public void setPersonasGustan(Collection<Persona> personasGustan) {
 		this.personasGustan = personasGustan;
+	}
+	
+
+	public Collection<Persona> getPersonasDisgustan() {
+		return personasDisgustan;
+	}
+
+	public void setPersonasDisgustan(Collection<Persona> personasDisgustan) {
+		this.personasDisgustan = personasDisgustan;
 	}
 
 	//=============================

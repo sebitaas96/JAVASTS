@@ -1,5 +1,9 @@
 package org.ssirbu.pap2021.controller;
 
+import java.nio.file.Files;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,12 +11,14 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.ssirbu.pap2021.entities.Aficion;
 import org.ssirbu.pap2021.entities.Pais;
 import org.ssirbu.pap2021.entities.Persona;
@@ -32,6 +38,10 @@ public class PersonaController {
 	private PaisRepository paisRepository;
 	@Autowired
 	private AficionRepository aficionRepository;
+	
+	@Value("${app.uploadFolder}")
+	private String UPLOADED_FOLDER;
+
 	
 	@GetMapping("/persona/r")
 	public String r(
@@ -57,23 +67,43 @@ public class PersonaController {
 			@RequestParam("nom") String nombre,
 			@RequestParam("pass") String password,
 			@RequestParam("nace") Long naceId,
+			@RequestParam("vive") Long viveId,
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 			@RequestParam("fNacimiento")
 			LocalDate fNacimiento,
 			//Si ponemos el required false podemos decir que podemso asumir que no venga nada en este parametro
 			@RequestParam(value="afiGusta[]", required=false)List<Long>afiGustaIds,
+			@RequestParam(value="afiDisgusta[]", required=false)List<Long>afiDisgustaIds,
+			@RequestParam("foto") MultipartFile foto,
 			ModelMap m
 			) throws DangerException, InfoException {
 			//Los parametros que vienen del formulario vienen por los corchetes
 		try {
-			Persona p = new Persona(nombre , password,paisRepository.getById(naceId),fNacimiento);
+			Persona p = new Persona(nombre , password,paisRepository.getById(naceId),paisRepository.getById(viveId),fNacimiento);
 			if(afiGustaIds !=null) {
 				for(Long id : afiGustaIds) {
 					p.addAficionGusta(aficionRepository.getById(id));
 				}
 			}
-
+			if(afiDisgustaIds !=null) {
+				for(Long id : afiDisgustaIds) {
+					p.addAficionDisgusta(aficionRepository.getById(id));
+				}
+			}
+			
+			
 			personaRepository.save(p);
+			
+			try {
+				byte[] bytes = foto.getBytes();
+				Path path = Paths.get(UPLOADED_FOLDER +(p.getId()+foto.getOriginalFilename()));
+				Files.write(path, bytes);
+			}
+
+			catch (Exception e) {
+				PRG.error(e.getMessage());
+			}
+
 		}
 		catch(Exception e) {
 			PRG.error("Error identerminado al crear a la persona: "+e.getMessage() ,"/persona/c");
@@ -102,10 +132,12 @@ public class PersonaController {
 			@RequestParam("nom")String nombre,
 			@RequestParam("idPersona")Long id,
 			@RequestParam("nace")Long idNace,
+			@RequestParam("vive")Long idVive,
 			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 			@RequestParam("fNacimiento")
 			LocalDate fNacimiento,
 			@RequestParam(value="afiGusta[]" , required=false) List<Long> idsAficion,
+			@RequestParam(value="afiDisgusta[]" , required=false) List<Long> idsAficionDisgusta,
 			ModelMap m 
 			) throws DangerException, InfoException {
 
@@ -120,6 +152,11 @@ public class PersonaController {
 				persona.setNace(nuevoPaisNacimiento);
 			}
 			
+			if(idNace != persona.getVive().getId()) {
+				Pais nuevoPaisResidencia  = paisRepository.getById(idVive);
+				persona.setVive(nuevoPaisResidencia);
+			}
+			
 			ArrayList<Aficion> nuevasAficiones = new ArrayList<Aficion>();
 			
 			if(idsAficion !=null) {
@@ -127,7 +164,16 @@ public class PersonaController {
 					nuevasAficiones.add(aficionRepository.getById(idAficion));
 				}
 			}
-			persona.setAficionesGusta(nuevasAficiones);	
+			persona.setAficionesGusta(nuevasAficiones);
+			
+			ArrayList<Aficion> nuevasAficionesDisgusta = new ArrayList<Aficion>();
+			
+			if(idsAficionDisgusta !=null) {
+				for (Long idAficion : idsAficionDisgusta) {
+					nuevasAficionesDisgusta.add(aficionRepository.getById(idAficion));
+				}
+			}
+			persona.setAficionesGusta(nuevasAficionesDisgusta);	
 			personaRepository.save(persona);
 			}
 		catch(Exception e) {

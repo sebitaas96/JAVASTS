@@ -29,23 +29,32 @@ public class Persona {
 	//Es many to one por que muchas personas nacen en un pais y ya lo hemsos mapeado en pai
 	@ManyToOne
 	private Pais nace;
+	@ManyToOne
+	private Pais vive;
 	
 	@ManyToMany
 	private Collection<Aficion>aficionesGusta;
+	@ManyToMany
+	private Collection<Aficion>aficionesDisgusta;
 	
 	
 	//============================	
 	public Persona() {
 		this.nombre = "Jhon Doe";
 		this.aficionesGusta = new ArrayList<Aficion>();
+		this.aficionesDisgusta = new ArrayList<Aficion>();
 		this.setfNacimiento(LocalDate.now());
 	}
 
-	public Persona(String nombre , String password , Pais nace , LocalDate fNacimiento) {
+	public Persona(String nombre , String password , Pais nace ,Pais vive,LocalDate fNacimiento ) {
 		this.nombre = nombre;
+		this.aficionesGusta = new ArrayList<Aficion>();
+		this.aficionesDisgusta = new ArrayList<Aficion>();
 		this.password= encriptar(password);
 		this.nace = nace;
 		this.nace.getNativos().add(this);
+		this.vive = vive;
+		this.vive.getResidentes().add(this);
 		this.setfNacimiento(fNacimiento);
 	}
 
@@ -85,6 +94,16 @@ public class Persona {
 		this.nace.getNativos().add(this);
 	}
 	
+	
+	public Pais getVive() {
+		return vive;
+	}
+
+	public void setVive(Pais vive) {
+		this.vive = vive;
+		this.vive.getResidentes().add(this);
+	}
+
 	public LocalDate getfNacimiento() {
 		return fNacimiento;
 	}
@@ -101,8 +120,15 @@ public class Persona {
 	public void setAficionesGusta(Collection<Aficion> aficionesGusta) {
 		this.aficionesGusta = aficionesGusta;
 	}
-	
+	public Collection<Aficion> getAficionesDisgusta() {
+		return aficionesDisgusta;
+	}
 
+	public void setAficionesDisgusta(Collection<Aficion> aficionesDisgusta) {
+		this.aficionesDisgusta = aficionesDisgusta;
+	}
+	
+	
 	//=============================
 
 	
@@ -110,6 +136,12 @@ public class Persona {
 		this.aficionesGusta.add(aficion);
 		aficion.getPersonasGustan().add(this);
 	}
+	
+	public void addAficionDisgusta(Aficion aficion) {
+		this.aficionesDisgusta.add(aficion);
+		aficion.getPersonasDisgustan().add(this);
+	}
+
 
 	private String encriptar(String password) {
 		return (new BCryptPasswordEncoder()).encode(password);

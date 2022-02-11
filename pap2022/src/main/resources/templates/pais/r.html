@@ -6,6 +6,8 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nombre</th>
+      <th scope="col">Nacidos</th>
+      <th scope="col">Residentes</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -14,6 +16,8 @@
     <tr th:each="pais:${paises}">
     	<td th:text="${pais.id}"></td>
     	<td th:text="${pais.nombre}"></td>
+    	<td th:text="${pais.nativos.size()}"></td>
+    	<td th:text="${pais.residentes.size()}"></td>
     	<td>
      		<form method="post" action="/pais/u">
      			<button type="submit" class="btn btn-primary">

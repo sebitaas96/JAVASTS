@@ -8,7 +8,9 @@
       <th scope="col">Nombre</th>
       <th scope="col">Fecha de Nacimiento</th>
       <th scope="col">Pais nacimiento</th>
+	  <th scope="col">Pais residencia</th>
       <th scope="col">Aficiones gusta</th>
+      <th scope="col">Aficiones disgusta</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -20,8 +22,10 @@
       <td th:text="${persona.getEdad()}"/>
       <!--Si ponemos las pipes podemos añadir mas texto-->
       <td th:text="|${persona.nace.nombre}: Total(${persona.nace.nativos.size()})|"/>
+      <td th:text="|${persona.vive.nombre}: Total(${persona.vive.residentes.size()})|"/>
       <!--La etiquete th:bloc crea como un pequeño div que no inserta nada en el html-->
       <td><th:block th:each="aficion:${persona.aficionesGusta}" th:text="|${aficion.nombre}, |"/></td>
+      <td><th:block th:each="aficion:${persona.aficionesDisgusta}" th:text="|${aficion.nombre}, |"/></td>
       <td>
      	<form method="post" action="/persona/u">
      		<button type="submit" class="btn btn-primary">
