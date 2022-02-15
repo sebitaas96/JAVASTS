@@ -156,12 +156,18 @@ public class Persona {
 			sol = intervalo.getYears();
 		}
 		return sol;
-	}	
+	}
+	
+	public String getRol() {
+		return nombre.equals("admin")?"admin":"auth";
+	}
 	
 	@Override
 	public String toString() {
 		return "Pais [nombre=" + nombre + "]";
 	}
+
+
 
 
 	
