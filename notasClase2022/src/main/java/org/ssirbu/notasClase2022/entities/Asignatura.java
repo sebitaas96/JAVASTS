@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,20 +24,27 @@ public class Asignatura {
 	
 	@OneToMany(mappedBy = "calificada" ,cascade = CascadeType.ALL)
 	private Collection<Nota> calificadas;
+	
+	@ManyToOne
+	private Profesor profesorImparte;
+	
+	@ManyToMany(mappedBy="asignaturasMatriculado")
+	private Collection<Alumno>alumnosMatriculados;
 
 	//====================================
 	public Asignatura() {
 		this.nombre="EF";
 		this.calificadas = new ArrayList<Nota>();
+		this.alumnosMatriculados = new ArrayList<Alumno>();
 	}
 	
-	public Asignatura(String nombre, Collection<Nota> calificadas) {
+	public Asignatura(String nombre, Collection<Nota> calificadas, Profesor profesorImparte) {
 		this.nombre = nombre;
 		this.calificadas = new ArrayList<Nota>();
+		this.profesorImparte = profesorImparte;
+		this.profesorImparte.getAsignaturasImparte().add(this);
+		this.alumnosMatriculados = new ArrayList<Alumno>();
 	}
-
-
-	
 	//====================================
 	public Long getId() {
 		return id;
@@ -60,6 +69,26 @@ public class Asignatura {
 	public void setCalificadas(Collection<Nota> calificadas) {
 		this.calificadas = calificadas;
 	}
+
+	public Collection<Alumno> getAlumnosMatriculados() {
+		return alumnosMatriculados;
+	}
+
+	public void setAlumnosMatriculados(Collection<Alumno> alumnosMatriculados) {
+		this.alumnosMatriculados = alumnosMatriculados;
+	}
+
+	public Profesor getProfesorImparte() {
+		return profesorImparte;
+	}
+
+	public void setProfesorImparte(Profesor profesorImparte) {
+		this.profesorImparte = profesorImparte;
+	}
+	
+	//============================0
+
+	
 	
 
 }
