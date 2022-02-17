@@ -21,7 +21,6 @@ public class Nota {
 	private Asignatura calificada;
 	
 	
-	
 	public Nota() {
 		this.cantidad = 0.0F;
 	}

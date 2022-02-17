@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
-    <fullyQualifiedTypeName name="org.ssirbu.pap2021.entities.Pais"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
@@ -42,7 +40,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Usuario"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Nota"/>
-    <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Alumno"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
@@ -58,6 +55,9 @@
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.service.AsignaturaService"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Asignatura"/>
-    <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.repository.AsignaturaRepository"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.service.ProfesorService"/>
+    <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.repository.AlumnoRepository"/>
+    <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.repository.AsignaturaRepository"/>
+    <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.service.AlumnoService"/>
+    <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Alumno"/>
 </qualifiedTypeNameHistroy>
