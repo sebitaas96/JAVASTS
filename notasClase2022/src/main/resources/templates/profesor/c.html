@@ -1,0 +1,36 @@
+
+
+<div class="container mt-4 mb-4 bg-secondary bg-opacity-10">
+	<div class="row mb-4 ">
+	<h1 class="display-6 col-12 mb-4">Crea tu profesor</h1>
+	<form action="/profesor/cPost" method="post" class="row">
+		<div class="col-2">			
+			<label for="dni">DNI:</label>
+			<input type="text" name="dni" id="dni" required="required" class="form-control" placeholder="00000000-X"/>
+		</div>
+		<div class="col-2">			
+			<label for="nom">Nombre:</label>
+			<input type="text" name="nom" id="nom" required="required" class="form-control" placeholder="Nombre"/>
+		</div>
+		<div class="col-2">			
+			<label for="ape">Apellidos:</label>
+			<input type="text" name="ape" id="ape" required="required" class="form-control" placeholder="Apellido"/>
+		</div>
+		<div class="col-2">			
+			<label for="pass">Password:</label>
+			<input type="password" name="pass" id="pass" required="required" class="form-control" placeholder="Contraseña"/>
+		</div>
+  		 <div class="col-6 mt-4">
+  		 	<label>Asignaturas que imparte</label>
+  			<div class="custom-control custom-checkbox" th:each="asignatura:${asignaturas}">
+  				<input type="checkbox" class="custom-control-input" name="asigImparte[]" th:id="${asignatura.id}" th:value="${asignatura.id}">
+  				<label class="custom-control-label" th:for="${asignatura.id}" th:text="${asignatura.nombre}"/>
+			</div>
+  		</div>
+  		 <div class="col-6 mt-4">
+  		</div>
+  	<button class="btn btn-primary col-2 mt-4" type="submit">Crear</button>
+	</form>
+	</div>
+</div>
+	

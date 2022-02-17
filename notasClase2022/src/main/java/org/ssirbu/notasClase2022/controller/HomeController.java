@@ -3,6 +3,7 @@ package org.ssirbu.notasClase2022.controller;
 import javax.servlet.http.HttpSession;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.ssirbu.notasClase2022.exception.DangerException;
+import org.ssirbu.notasClase2022.exception.InfoException;
+import org.ssirbu.notasClase2022.helper.H;
 
 @Controller
 public class HomeController {
@@ -43,7 +47,7 @@ public class HomeController {
 		return "_t/frame";
 	}
 	
-	@PostMapping("/login")
+	/*@PostMapping("/login")
 	public void loginPost(
 			@RequestParam("nom")String nombre,
 			@RequestParam("pass")String password,
@@ -51,7 +55,7 @@ public class HomeController {
 			) throws DangerException, InfoException {
 		
 		try {
-		Persona p = personaRepository.getByNombre(nombre);
+		
 		if (new BCryptPasswordEncoder().matches(password,p.getPassword())){
 			//Abrimos una sesion que funciona como un map y agregamos los valores que queramo
 			s.setAttribute("persona", p);
@@ -70,7 +74,7 @@ public class HomeController {
 		//Borramos la variable de sesion
 		sesion.invalidate();
 		return "redirect:/";
-	}
+	}*/
 	
 	@GetMapping("/")
 	public String index(ModelMap m) {

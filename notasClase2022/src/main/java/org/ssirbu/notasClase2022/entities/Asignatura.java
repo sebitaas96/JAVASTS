@@ -41,8 +41,6 @@ public class Asignatura {
 	public Asignatura(String nombre, Collection<Nota> calificadas, Profesor profesorImparte) {
 		this.nombre = nombre;
 		this.calificadas = new ArrayList<Nota>();
-		this.profesorImparte = profesorImparte;
-		this.profesorImparte.getAsignaturasImparte().add(this);
 		this.alumnosMatriculados = new ArrayList<Alumno>();
 	}
 	//====================================

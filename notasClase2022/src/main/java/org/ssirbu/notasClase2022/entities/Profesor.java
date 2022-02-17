@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Profesor  extends Usuario{
 	
@@ -28,6 +29,12 @@ public class Profesor  extends Usuario{
 
 	public void setAsignaturasImparte(Collection<Asignatura> asignaturasImparte) {
 		this.asignaturasImparte = asignaturasImparte;
+	}
+	
+	//==========================
+	public void addAsignaturaImparte(Asignatura asignatura) {
+		this.asignaturasImparte.add(asignatura);
+		asignatura.setProfesorImparte(this);
 	}
 	
 	
