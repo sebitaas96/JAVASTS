@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.ssirbu.notasClase2022.exception.DangerException;
 import org.ssirbu.notasClase2022.exception.InfoException;
+import org.ssirbu.notasClase2022.exception.PRG;
 import org.ssirbu.notasClase2022.helper.H;
+import org.ssirbu.pap2021.entities.Persona;
 
 @Controller
 public class HomeController {
@@ -47,19 +49,15 @@ public class HomeController {
 		return "_t/frame";
 	}
 	
-	/*@PostMapping("/login")
+	@PostMapping("/login")
 	public void loginPost(
-			@RequestParam("nom")String nombre,
+			@RequestParam("dni")String dni,
 			@RequestParam("pass")String password,
 			HttpSession s //Le pasamso esta variable que es la sesion  , para ver si hay una creada o no  
 			) throws DangerException, InfoException {
 		
 		try {
-		
-		if (new BCryptPasswordEncoder().matches(password,p.getPassword())){
-			//Abrimos una sesion que funciona como un map y agregamos los valores que queramo
-			s.setAttribute("persona", p);
-		}
+	
 		}
 		catch(Exception e) {
 			PRG.error("Login incorrecto" ,"/login");
@@ -74,7 +72,7 @@ public class HomeController {
 		//Borramos la variable de sesion
 		sesion.invalidate();
 		return "redirect:/";
-	}*/
+	}
 	
 	@GetMapping("/")
 	public String index(ModelMap m) {

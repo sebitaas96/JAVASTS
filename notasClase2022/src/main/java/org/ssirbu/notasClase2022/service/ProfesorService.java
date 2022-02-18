@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.ssirbu.notasClase2022.entities.Asignatura;
 import org.ssirbu.notasClase2022.entities.Profesor;
 import org.ssirbu.notasClase2022.repository.AsignaturaRepository;
 import org.ssirbu.notasClase2022.repository.ProfesorRepository;
@@ -20,7 +21,13 @@ public class ProfesorService {
 			Profesor p = new Profesor(dni , nombre,apellido,pwd);
 			if(asigImaprte !=null) {
 				for(Long id : asigImaprte) {
-					p.addAsignaturaImparte(asignaturaRepository.getById(id));
+					Asignatura a = asignaturaRepository.getById(id);
+					if(a.getProfesorImparte()==null) {
+						p.addAsignaturaImparte(a);
+					}
+					else {
+						throw new Exception("La asignatura ya la imparte otro profesor");
+					}
 				}
 			}
 

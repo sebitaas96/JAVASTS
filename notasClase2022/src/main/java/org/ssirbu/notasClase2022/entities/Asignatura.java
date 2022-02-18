@@ -25,7 +25,7 @@ public class Asignatura {
 	@OneToMany(mappedBy = "calificada" ,cascade = CascadeType.ALL)
 	private Collection<Nota> calificadas;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Profesor profesorImparte;
 	
 	@ManyToMany(mappedBy="asignaturasMatriculado")

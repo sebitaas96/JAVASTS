@@ -57,5 +57,10 @@ public class Alumno extends Usuario{
 		asignatura.getAlumnosMatriculados().add(this);
 	}
 	
+	public void removeasignaturasMatriculado(Asignatura asignatura) {
+		this.asignaturasMatriculado.remove(asignatura);
+		asignatura.getAlumnosMatriculados().remove(this);
+	}
+	
 
 }

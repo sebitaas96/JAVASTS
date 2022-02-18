@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,6 +17,7 @@ import org.ssirbu.notasClase2022.exception.DangerException;
 import org.ssirbu.notasClase2022.exception.InfoException;
 import org.ssirbu.notasClase2022.exception.PRG;
 import org.ssirbu.notasClase2022.service.AsignaturaService;
+
 
 
 @Controller
@@ -57,6 +59,48 @@ public class AsignaturaController {
 			PRG.error("Ha habido un error añadiendo la asignatura "+e.getMessage() ,"/asignatura/c");
 		}
 		PRG.info("La asignatura se ha insertado correctamente" ,"/asignatura/r");
+	}
+	
+	@PostMapping("u")
+	public String u(
+			@RequestParam("asignatura")Long asignaturaId,
+			ModelMap m 
+			) {
+		Asignatura asignatura= asignaturaService.getById(asignaturaId);
+		m.put("asignatura", asignatura);
+		m.put("view","asignatura/u");
+		return "_t/frame";
+	}
+	@PostMapping("uPost")
+	public void uPost(
+			@RequestParam("nom")String nombre,
+			@RequestParam("id")Long id
+			) throws DangerException, InfoException {
+
+		try {
+			asignaturaService.updateAsignatura(id , nombre);
+		}
+		catch(Exception e) {
+			PRG.error("La asignatura no se ha podido actualizar"+e.getMessage() ,"/asignatura/r");
+		}
+		PRG.info("La asignatura se ha actualizado correctamente" ,"/asignatura/r");
+
+
+	}
+	
+	@PostMapping("dPost")
+	public void d(
+			@RequestParam("asignatura")Long id
+			) throws DangerException, InfoException {
+		try {
+			asignaturaService.deleteById(id);
+		}
+		catch(Exception e) {
+			PRG.error("La asignatura no se ha podido eliminar"+e.getMessage(),"/asignatura/r");
+		}
+		
+		PRG.info("La asignatura se ha eliminado" ,"/asignatura/r");
+
 	}
 	
 }

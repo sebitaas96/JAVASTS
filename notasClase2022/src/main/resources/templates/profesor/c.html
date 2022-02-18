@@ -23,8 +23,10 @@
   		 <div class="col-6 mt-4">
   		 	<label>Asignaturas que imparte</label>
   			<div class="custom-control custom-checkbox" th:each="asignatura:${asignaturas}">
-  				<input type="checkbox" class="custom-control-input" name="asigImparte[]" th:id="${asignatura.id}" th:value="${asignatura.id}">
-  				<label class="custom-control-label" th:for="${asignatura.id}" th:text="${asignatura.nombre}"/>
+  				<th:block th:if="${asignatura.profesorImparte==null}">
+  					<input type="checkbox" class="custom-control-input" name="asigImparte[]" th:id="${asignatura.id}" th:value="${asignatura.id}">
+  					<label class="custom-control-label" th:for="${asignatura.id}" th:text="${asignatura.nombre}"/>
+  				</th:block>
 			</div>
   		</div>
   		 <div class="col-6 mt-4">

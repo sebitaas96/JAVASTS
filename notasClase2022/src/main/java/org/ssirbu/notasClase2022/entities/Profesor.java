@@ -3,6 +3,7 @@ package org.ssirbu.notasClase2022.entities;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -10,7 +11,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Profesor  extends Usuario{
 	
-	@OneToMany(mappedBy = "profesorImparte")
+	@OneToMany(mappedBy = "profesorImparte", cascade = CascadeType.ALL)
 	private Collection<Asignatura>asignaturasImparte;
 	
 	public Profesor() {
