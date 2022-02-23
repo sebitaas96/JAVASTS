@@ -37,4 +37,8 @@ public class AlumnoService {
 	public List<Alumno> findAll() {
 		return alumnoRepository.findAll();
 	}
+	
+	public List<Alumno>finByApellido(String f){
+		return alumnoRepository.findByApellido(f);
+	}
 }

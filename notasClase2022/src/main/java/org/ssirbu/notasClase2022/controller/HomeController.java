@@ -4,8 +4,8 @@ import javax.servlet.http.HttpSession;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import org.ssirbu.notasClase2022.exception.DangerException;
 import org.ssirbu.notasClase2022.exception.InfoException;
 import org.ssirbu.notasClase2022.exception.PRG;
 import org.ssirbu.notasClase2022.helper.H;
-import org.ssirbu.pap2021.entities.Persona;
+
 
 @Controller
 public class HomeController {

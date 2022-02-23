@@ -28,7 +28,7 @@ public class Asignatura {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Profesor profesorImparte;
 	
-	@ManyToMany(mappedBy="asignaturasMatriculado")
+	@ManyToMany(mappedBy="asignaturasMatriculado",cascade = CascadeType.ALL)
 	private Collection<Alumno>alumnosMatriculados;
 
 	//====================================

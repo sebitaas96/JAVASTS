@@ -38,5 +38,10 @@ public class Profesor  extends Usuario{
 		asignatura.setProfesorImparte(this);
 	}
 	
+	public void removeAsignaturaImparte(Asignatura asignatura) {
+		this.asignaturasImparte.remove(asignatura);
+		asignatura.setProfesorImparte(null);
+	}
+	
 	
 }

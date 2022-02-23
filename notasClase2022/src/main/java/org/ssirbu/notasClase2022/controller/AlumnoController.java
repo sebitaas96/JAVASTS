@@ -28,10 +28,18 @@ public class AlumnoController {
 	
 	@GetMapping("r")
 	public String r(
+			@RequestParam(value="f", required=false)String f,
 			//Creamos un model map vacio
 			ModelMap m 
 			) {
-		List<Alumno> alumnos = alumnoService.findAll();
+		List<Alumno> alumnos = null;
+		if (f==null || f.equals("")) {
+			alumnos =alumnoService.findAll();
+		}
+		else {
+			alumnos = alumnoService.finByApellido(f);
+		}
+		
 		m.put("alumnos", alumnos);
 		m.put("view","alumno/r");
 		return "_t/frame";

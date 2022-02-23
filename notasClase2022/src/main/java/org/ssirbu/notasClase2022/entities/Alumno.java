@@ -16,7 +16,7 @@ public class Alumno extends Usuario{
 
 	@OneToMany(mappedBy = "calificado" ,cascade = CascadeType.ALL)
 	private Collection<Nota> calificados;
-	@ManyToMany()
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Collection<Asignatura>asignaturasMatriculado;
 	
 	public Alumno() {

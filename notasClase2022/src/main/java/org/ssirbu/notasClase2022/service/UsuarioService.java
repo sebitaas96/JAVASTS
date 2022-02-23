@@ -7,12 +7,10 @@ import org.ssirbu.notasClase2022.entities.Usuario;
 import org.ssirbu.notasClase2022.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
-	@Autowired
-	private AlumnoRepository alumnoRepository;
-	@Autowired
-	private 
+
+
 	
-	
+	/*
 	public void login(String nombre ,String pwd) {
 		Usuario u = null;
 		if (new BCryptPasswordEncoder().matches(password,u.getPassword())){
@@ -20,5 +18,5 @@ public class UsuarioService {
 			s.setAttribute("usuario", u);
 		}
 		
-	}
+	}*/
 }
