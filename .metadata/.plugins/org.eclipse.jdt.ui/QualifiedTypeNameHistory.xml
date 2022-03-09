@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.ssirbu.pap2021.repository.MensajeRepository"/>
-    <fullyQualifiedTypeName name="org.ssirbu.pap2021.entities.Mensaje"/>
-    <fullyQualifiedTypeName name="org.springframework.ui.ModelMap"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="javax.persistence.Column"/>
-    <fullyQualifiedTypeName name="org.ssirbu.pap2021.repository.PersonaRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ControllerAdvice"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ExceptionHandler"/>
@@ -17,7 +10,6 @@
     <fullyQualifiedTypeName name="org.ssirbu.pap2021.repository.AficionRepository"/>
     <fullyQualifiedTypeName name="org.ssirbu.pap2021.entities.Aficion"/>
     <fullyQualifiedTypeName name="org.springframework.format.annotation.DateTimeFormat"/>
-    <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="java.time.Period"/>
     <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
     <fullyQualifiedTypeName name="java.nio.file.Path"/>
@@ -34,7 +26,6 @@
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
-    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.helper.H"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.exception.DangerException"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.exception.InfoException"/>
@@ -51,13 +42,22 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Usuario"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.repository.UsuarioRepository"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.exception.DangerException"/>
-    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.exception.InfoException"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.repository.AlumnoRepository"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.repository.ProfesorRepository"/>
     <fullyQualifiedTypeName name="org.ssirbu.notasClase2022.entities.Profesor"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.repository.ResultadoRepository"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.repository.JornadaRepository"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.repository.EquipoRepository"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.entities.Jornada"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.entities.Equipo"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.exception.DangerException"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.exception.InfoException"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.entities.Resultado"/>
+    <fullyQualifiedTypeName name="org.ssirbu.ssirbu.exception.PRG"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
 </qualifiedTypeNameHistroy>
